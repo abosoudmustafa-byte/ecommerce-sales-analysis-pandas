@@ -1,52 +1,81 @@
-📅 Week 1 – Core Data Analysis
-🔎 Data Exploration
+🛒 E-Commerce Sales Analysis
+Data Cleaning & Time-Based Performance Insights
+📌 Project Overview
 
-Loaded dataset
+This project analyzes an e-commerce transactions dataset using Python and Pandas.
 
-Checked structure using .info(), .describe(), .shape()
+The main objective is to:
 
-📊 Key Metrics
+Clean and validate raw transactional data
 
-Total Revenue
+Transform line-level data into order-level insights
 
-Total Orders
+Perform time-based revenue analysis
 
-Average Order Value (AOV)
+Extract meaningful business insights
 
-🧠 Concepts Learned
+This project is part of my structured preparation for Machine Learning and Deep Learning.
 
-Line-level vs Order-level data
+🧠 Business Objective
 
-GroupBy fundamentals
+Understand sales performance trends and customer purchasing behavior by answering:
 
-Sorting and filtering
+How does revenue evolve over time?
 
-Basic bar visualizations
+Which months perform best and worst?
 
-🧹 Week 2 – Data Cleaning
-✅ Missing Values
+How stable is the Average Order Value (AOV)?
+
+What is the impact of data cleaning on analysis accuracy?
+
+📂 Dataset Structure
+
+The dataset contains:
+
+Order-level information (order_id, city, payment method, total)
+
+Line-level product details (product_id, category, quantity, price)
+
+Date and transaction metadata
+
+A key challenge in this dataset was distinguishing between:
+
+Line-level data (each row = product inside an order)
+
+Order-level data (each order counted once)
+
+This distinction was critical for accurate revenue calculations.
+
+🧹 Data Cleaning Process
+
+The dataset underwent multiple validation steps:
 
 Removed rows with missing unit_price
 
-Filled missing city and payment_method with "Unknown"
+Filled missing categorical values (city, payment_method)
 
-✅ Duplicates
+Removed duplicated rows
 
-Removed fully duplicated rows
+Removed invalid quantities (quantity <= 0)
 
-✅ Invalid Values
+Converted order_date to datetime format
 
-Removed rows where quantity <= 0
+Created year and month features
 
-✅ Datetime Handling
+A cleaned dataset was exported for reproducibility.
 
-Converted order_date to datetime
+📊 Analytical Approach
+1️⃣ Order-Level Aggregation
 
-Created year and month columns
+Converted line-level data into order-level data using:
 
-💾 Exported Clean Dataset
-📈 Week 3 – Time-Based Analysis
-📊 Monthly Metrics
+groupby("order_id").first()
+
+This prevented revenue double-counting.
+
+2️⃣ Monthly Performance Analysis
+
+Calculated:
 
 Monthly Revenue
 
@@ -54,21 +83,28 @@ Monthly Orders
 
 Monthly Average Order Value (AOV)
 
-📈 Time-Series Visualization
+Used multi-column grouping:
 
-Revenue trend over time
+groupby(["year", "month"])
 
-Identified best and worst performing months
+to build time-based metrics.
 
-🧠 Advanced Concepts Practiced
+📈 Monthly Revenue Trend
 
-Multi-column GroupBy (year, month)
 
-MultiIndex handling
+📊 Key Insights
 
-Time aggregation
+Revenue shows a clear time-based trend across months.
 
-🛠️ Technologies Used
+Some months significantly outperform others.
+
+Average Order Value remains relatively stable.
+
+Data cleaning improved metric accuracy and removed inconsistencies.
+
+Proper order-level aggregation prevented revenue inflation.
+
+🛠 Technologies Used
 
 Python
 
@@ -80,14 +116,16 @@ Matplotlib
 
 Git & GitHub
 
-🎯 Project Goal
+📚 Skills Demonstrated
 
-This project focuses on:
+Data Cleaning & Validation
 
-Strengthening data manipulation skills
+Multi-level GroupBy operations
 
-Understanding data structures deeply
+Time-Series Aggregation
 
-Preparing for Machine Learning foundations
+Feature Engineering
 
-Developing analytical thinking
+Analytical Thinking
+
+Data Structuring (Line vs Order level)
